@@ -1157,6 +1157,12 @@ function gsfcSave(t) {
                 ),
                 'requires'    => '',
             ),
+            'wrap_class'             => array(
+	            'label'       => __( 'Widget Wrap Class', 'gsfc' ),
+	            'description' => __( 'Fill in this field if you want to add a custom class to the whole widget area.', 'gsfc' ),
+	            'type'        => 'text',
+	            'requires'    => '',
+            )
         );
 
         $box_4 = array(
@@ -1918,11 +1924,11 @@ function gsfcSave(t) {
         /* Add the width from $widget_width to the class from the $before widget */
         // no 'class' attribute - add one with the value of width
         if( strpos( $b, 'class' ) === false ) {
-            $b = str_replace( '>', 'class="' . GS_Featured_Content::$base . '-' . sanitize_html_class( $class ) . ' featuredpost"', $b );
+            $b = str_replace( '>', 'class="' . sanitize_text_field( GS_Featured_Content::$widget_instance['wrap_class'] ) . ' ' . GS_Featured_Content::$base . '-' . sanitize_html_class( $class ) . ' featuredpost"', $b );
         }
         // there is 'class' attribute - append width value to it
         else {
-            $b = str_replace( 'class="', 'class="'. GS_Featured_Content::$base . '-' . sanitize_html_class( $class ) . ' featuredpost ', $b );
+            $b = str_replace( 'class="', 'class="' . sanitize_text_field( GS_Featured_Content::$widget_instance['wrap_class'] ) . ' ' . GS_Featured_Content::$base . '-' . sanitize_html_class( $class ) . ' featuredpost ', $b );
         }
 
         /* Before widget */
