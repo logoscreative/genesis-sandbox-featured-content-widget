@@ -1,6 +1,6 @@
-=== Genesis Sandbox Featured Content Widget ===
-Contributors: wpsmith 
-Donate link:http://wpsmith.net
+=== Evermore Featured Content Widget ===
+Contributors: wpsmith
+Donate link:https://evermo.re
 Tags: genesis, genesiswp, studiopress, featured post, cu
 Requires at least: 3.6
 Tested up to: 3.6
@@ -10,7 +10,7 @@ Genesis Featured Content with support for custom post types, taxonomies, and so 
 
 == Description ==
 
-Genesis Sandbox Featured Content Widget adds additional functionality to the Genesis Featured Posts Widget.  Specifically it:
+Evermore Featured Content Widget adds additional functionality to the Genesis Featured Posts Widget.  Specifically it:
 
 *   Supports Custom Post Types
 *   Supports Custom Taxonomies

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Genesis Sandbox Featured Content Widget Extension Class
+ * Evermore Featured Content Widget Extension Class
  *
  * @category   Genesis_Sandbox
  * @package    Widgets
- * @author     Travis Smith
+ * @author     Evermore
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
+ * @link       https://evermo.re/
  * @since      1.1.0
  */
 
@@ -18,29 +18,29 @@ class GSFC_Skeleton {
             add_filter( 'gsfc_defaults', array( $this, 'defaults' ), 10, 3 );
             add_filter( 'gsfc_form_fields', array( $this, 'add_form_fields' ), 10, 3 );
             add_filter( 'gsfc_update', array( $this, 'update' ), 10, 3 );
-            
+
             add_action( 'gsfc_before_post_content', array( $this, 'do_action' ) );
             add_action( 'gsfc_post_content', array( $this, 'do_action' ) );
             add_action( 'gsfc_after_post_content', array( $this, 'do_action' ) );
         }
     }
-    
+
     /**
      * Add Font Awesome default settings to Featured Content Widget
-     * 
+     *
      * @param array $defaults Array of default settings.
      * @return array $defaults Modified array of default settings.
      */
     public function defaults( $defaults ) {
         $gsfc_defaults = array();
-        
+
         // Give precendent to existing defaults over my own
         return wp_parse_args( $defaults, $gsfc_defaults );
     }
-    
+
     /**
      * Add Font Awesome to Featured Content Widget
-     * 
+     *
      * @param array $columns Array of Columns, Boxes, & Form Fields
      * @param array $instance The settings for the particular instance of the widget.
      * @param array $boxes Array of the Form Field Boxes
@@ -48,12 +48,12 @@ class GSFC_Skeleton {
      */
     public function add_form_fields( $columns, $instance, $boxes ) {
         $box_8 = array();
-        
+
         $columns['col2'] = array( $box_8, $boxes['box_5'], $boxes['box_6'], $boxes['box_7'], );
-        
+
         return $columns;
     }
-    
+
     /**
 	 * Update a particular instance.
 	 *
@@ -70,7 +70,7 @@ class GSFC_Skeleton {
 	public function update( $new_instance, $old_instance ) {
         return $new_instance;
     }
-    
+
     /**
      * Do Action
      *
@@ -79,7 +79,7 @@ class GSFC_Skeleton {
     public function do_action( $instance ) {
         //* Bail if empty show param
         if ( empty( $instance['show_icon'] ) ) return;
-        
+
         $link = $instance['link_icon_field'] && get_post_meta( get_the_ID(), $instance['link_icon_field'], true ) ? get_post_meta( get_the_ID(), $instance['link_icon_field'], true ) : get_permalink();
         $icon = sprintf( '<%1$s class="%2$s"></%1$s>', $instance['icon_tag'], $instance['icon'] );
         $icon = $instance['link_icon'] == 1 ? sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, the_title_attribute( 'echo=0' ), $align, $icon ) : $icon;

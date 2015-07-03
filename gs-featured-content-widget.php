@@ -1,29 +1,29 @@
 <?php
 /**
- * Plugin Name: Genesis Sandbox Featured Content Widget
+ * Plugin Name: Evermore Featured Content Widget
  * Plugin URI: https://wpsmith.net/
  * Description: Based on the Genesis Featured Widget Amplified for additional functionality which allows support for custom post types, taxonomies, and extends the flexibility of the widget via action hooks to allow the elements to be re-positioned or other elements to be added.
  * Version: 1.2.4
- * Author: Travis Smith
- * Author URI: http://wpsmith.net/
+ * Author: Evermore
+ * Author URI: https://evermo.re/
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
  * that you can use any other version of the GPL.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  */
- 
+
 /**
  * Genesis Sandbox Featured Post Widget
  *
  * @category   Genesis_Sandbox_Featured_Content
  * @package    Widgets
- * @author     Travis Smith
+ * @author     Evermore
  * @license    http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link       http://wpsmith.net/
+ * @link       https://evermo.re/
 
 /** Exit if accessed directly */
 if ( ! defined( 'ABSPATH' ) ) exit( 'Cheatin&#8217; uh?' );
@@ -48,7 +48,7 @@ function gsfc_activation_check() {
         deactivate_plugins( plugin_basename( __FILE__ ) ); // Deactivate ourself
         wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed %1$sGenesis%2$s', 'gsfc' ), '<a href="http://wpsmith.net/get-genesis/">', '</a>' ) );
     }
-    
+
     if ( ! function_exists( 'genesis_upgrade_2001' ) ) {
         deactivate_plugins( plugin_basename( __FILE__ ) ); // Deactivate ourself
         wp_die( sprintf( __( 'Sorry, you can\'t activate without %1$sGenesis %2$s%3$s or greater', 'gsfc' ), '<a href="http://wpsmith.net/get-genesis/">', $latest, '</a>' ) );
@@ -63,11 +63,11 @@ add_action( 'genesis_init', 'gsfc_init', 50 );
 function gsfc_init() {
     if ( is_admin() ) {
         require_once( 'gsfc-settings.php' );
-        
+
         global $_gsfc_settings;
         $_gsfc_settings = new GSFC_Settings();
     }
-    
+
 }
 
 require_once( 'widget.php' );
@@ -91,7 +91,7 @@ function gsfc_widgets_init() {
 add_filter( 'plugin_action_links', 'gsfc_action_links', 10, 2 );
 /**
  * Add Menus & Donate Action Link.
- * 
+ *
  * @param array $links Array of links.
  * @param string $file Basename of plugin.
  * @return array $links Maybe modified array of links.
@@ -114,7 +114,7 @@ add_action( 'save_post', 'gsfc_save_post', 10, 3 );
  *
  * @since  1.1.5
  * @date   2014-06-24
- * @author Travis Smith <t(at)wpsmith.net>}
+ * @author Evermore <t(at)wpsmith.net>}
  *
  * @param  int            $post_ID                Post ID.
  * @param  WP_Post        $post                   Post object.
