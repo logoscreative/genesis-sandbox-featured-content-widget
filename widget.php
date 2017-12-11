@@ -404,7 +404,7 @@ class GS_Featured_Content extends WP_Widget {
 				'attr'    => genesis_parse_attr( 'gsfc-entry-image-widget', array( 'align' => $align, ) ),
 			) );
 
-        $image = $instance['link_image'] == 1 ? sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, the_title_attribute( 'echo=0' ), $align, $image ) : $image;
+        $image = $instance['link_image'] == 1 && ! empty( $image ) ? sprintf( '<a href="%s" title="%s" class="%s">%s</a>', $link, the_title_attribute( 'echo=0' ), $align, $image ) : $image;
 
         GS_Featured_Content::maybe_echo( $instance, 'gsfc_before_post_content', 'image_position', 'before-title', $image );
         GS_Featured_Content::maybe_echo( $instance, 'gsfc_post_content', 'image_position', 'after-title', $image );
@@ -1771,7 +1771,7 @@ function gsfcSave(t) {
 							break;
 
 						case 'checkbox' :
-                            printf( '<input type="checkbox" id="%1$s" name="%2$s" value="1" class="widget-control-save" %3$s />',
+                            printf( '<input type="checkbox" id="%1$s" name="%2$s" value="1" onchange="gsfcSave(this)" %3$s />',
                                 $obj->get_field_id( $field_id ),
                                 $obj->get_field_name( $field_id ),
                                 checked( 1, $instance[$field_id], false )

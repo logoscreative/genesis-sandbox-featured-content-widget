@@ -3,7 +3,7 @@
  * Plugin Name: Evermore Featured Content Widget
  * Plugin URI: https://wpsmith.net/
  * Description: Based on the Genesis Featured Widget Amplified for additional functionality which allows support for custom post types, taxonomies, and extends the flexibility of the widget via action hooks to allow the elements to be re-positioned or other elements to be added.
- * Version: 1.2.4
+ * Version: 1.2.5
  * Author: Evermore
  * Author URI: https://evermo.re/
  *
@@ -81,6 +81,9 @@ function gsfc_widgets_init() {
     if ( class_exists( 'Premise_Base' ) && !is_admin() ) {
         return;
     }
+	if ( ! function_exists( 'genesis_get_option' ) ) {
+		return;
+	}
     $gfwa = genesis_get_option( 'gsfc_gfwa' );
     if ( class_exists( 'Genesis_Featured_Widget_Amplified' ) && $gfwa ) {
         unregister_widget( 'Genesis_Featured_Widget_Amplified' );
